@@ -7,7 +7,7 @@ const errorHandler = (err, req, res, next) => {
   });
 };
 
-module.exports = errorHandler;
+module.exports = { errorHandler };
 
 // Summary
 // In this file, we created a middleware function that takes in four parameters: err, req, res, and next. We then set a variable called statusCode to either res.statusCode or 500. We then set the status of the response to statusCode and send a JSON object with a message and stack properties. If the environment is in production, we set the stack property to null. Finally, we export the errorHandler function.
