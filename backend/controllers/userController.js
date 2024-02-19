@@ -60,7 +60,7 @@ const signupUser = asyncHandler(async (req, res) => {
 });
 
 // @desc    Signin a new user
-// @route   POST /api/users/login
+// @route   POST /api/users/signin
 // @access  Public
 const signinUser = asyncHandler(async (req, res) => {
   const { email, password } = req.body;
