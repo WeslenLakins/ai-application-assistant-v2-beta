@@ -12,11 +12,11 @@ function Home() {
         </p>
       </section>
 
-      <Link to='/new-ticket' className='btn btn-reverse btn-block'>
-        <FaTicketAlt /> New Ticket
+      <Link to='/new-post' className='btn btn-reverse btn-block'>
+        <FaTicketAlt /> Create New Post
       </Link>
-      <Link to='/tickets' className='btn btn-block'>
-        <FaQuestionCircle /> View Tickets
+      <Link to='/posts' className='btn btn-block'>
+        <FaQuestionCircle /> View Posts
       </Link>
     </>
   );
