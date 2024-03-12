@@ -508,3 +508,223 @@ footer {
     font-size: 0.9rem;
   }
 }
+
+.post-detail {
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin: 20px auto;
+  width: 100%;
+  max-width: 960px;
+}
+
+.post-detail h2 {
+  color: #333;
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.post-detail p {
+  color: #666;
+  font-size: 1rem;
+  line-height: 1.7;
+  margin-bottom: 15px;
+}
+
+.post-author {
+  font-style: italic;
+  color: #999;
+}
+
+.post-date {
+  color: #999;
+  font-size: 0.875rem;
+  margin-bottom: 20px;
+}
+
+/* Enhance the loading text to fit the theme */
+.loading-text {
+  text-align: center;
+  font-size: 1.5rem;
+  color: #333;
+}
+
+/* You might want to add some styling for images or other media within the post content */
+.post-content img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 5px;
+}
+
+/* Adjust button styles if there are any in your post detail page */
+.post-detail .btn {
+  font-size: 1rem;
+  padding: 10px 15px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .post-detail {
+    padding: 15px;
+    margin: 10px;
+  }
+
+  .post-detail h2 {
+    font-size: 2rem;
+  }
+
+  .post-detail p {
+    font-size: 0.95rem;
+  }
+}
+/* Post Page Styles */
+.post-container {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.post-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.post-meta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9rem;
+  color: #666;
+  border-bottom: 1px solid #e6e6e6;
+  padding-bottom: 10px;
+  margin-bottom: 30px;
+}
+
+.post-author {
+  color: #555;
+  font-weight: 500;
+}
+
+.post-date {
+  color: #555;
+}
+
+.post-content {
+  font-size: 1rem;
+  line-height: 1.8;
+  color: #444;
+}
+
+/* Headings within the post content */
+.post-content h2,
+.post-content h3,
+.post-content h4 {
+  margin-top: 20px;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.post-content h2 {
+  font-size: 1.8rem;
+  font-weight: 600;
+}
+
+.post-content h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.post-content h4 {
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+/* Paragraphs within the post content */
+.post-content p {
+  margin-bottom: 20px;
+}
+
+/* Other elements within the post content like lists, images etc. */
+.post-content ul,
+.post-content ol {
+  margin-left: 20px;
+  margin-bottom: 20px;
+}
+
+.post-content img {
+  max-width: 100%;
+  height: auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border-radius: 4px;
+}
+
+/* If you have blockquotes in your content */
+.post-content blockquote {
+  border-left: 4px solid #e6e6e6;
+  margin: 20px 0;
+  padding-left: 15px;
+  font-style: italic;
+  color: #555;
+}
+
+/* For any links within your content */
+.post-content a {
+  color: #0066cc;
+  text-decoration: none;
+}
+
+.post-content a:hover {
+  text-decoration: underline;
+}
+
+/* For any buttons or calls to action within your post content */
+.post-content .btn {
+  display: inline-block;
+  margin: 20px 0;
+  padding: 10px 15px;
+  background-color: #000;
+  color: #fff;
+  border-radius: 4px;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.post-content .btn:hover {
+  background-color: #444;
+}
+
+/* Loading text style */
+.loading-text {
+  text-align: center;
+  font-size: 1.5rem;
+  color: #333;
+}
+
+@media (max-width: 768px) {
+  .post-container {
+    margin: 20px auto;
+  }
+
+  .post-title {
+    font-size: 2rem;
+  }
+
+  .post-content h2 {
+    font-size: 1.6rem;
+  }
+
+  .post-content h3 {
+    font-size: 1.4rem;
+  }
+
+  .post-content h4 {
+    font-size: 1.1rem;
+  }
+}

@@ -1,8 +1,9 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
-import { getPosts, reset } from '../features/posts/postSlice';
+import { getPosts, getPost, reset } from '../features/posts/postSlice'; // Import getPost
 import Spinner from '../components/Spinner';
+import { useNavigate } from 'react-router-dom';
 
 function Posts() {
   const { posts, isLoading, isError, isSuccess, message } = useSelector(
@@ -10,6 +11,7 @@ function Posts() {
   );
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   useEffect(() => {
     dispatch(getPosts());
@@ -17,6 +19,11 @@ function Posts() {
       dispatch(reset());
     };
   }, [dispatch]);
+
+  const handleReadMore = (id) => {
+    const post = posts.find((post) => post._id === id); // Find the post with the given ID
+    navigate(`/post/${id}`, { state: { post } }); // Pass the post data in the state property
+  };
 
   if (isLoading) {
     return <Spinner />;
@@ -36,13 +43,15 @@ function Posts() {
               <h2 className='post-title'>{post.title}</h2>
               <p className='post-excerpt'>{post.headline}</p>
               <div className='post-info'>
+                <span>By {post.author}</span>
                 <span>
                   Published on {new Date(post.createdAt).toLocaleDateString()}
                 </span>
-                <button className='read-more-btn'>Read More</button>
-              </div>
-              <div className='post-info'>
-                <span>By {post.author}</span>
+                <button
+                  className='read-more-btn'
+                  onClick={() => handleReadMore(post._id)}>
+                  Read More
+                </button>
               </div>
             </div>
           </div>
