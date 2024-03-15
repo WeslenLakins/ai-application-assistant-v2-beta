@@ -21,8 +21,8 @@ function Posts() {
   }, [dispatch]);
 
   const handleReadMore = (id) => {
-    const post = posts.find((post) => post._id === id); // Find the post with the given ID
-    navigate(`/post/${id}`, { state: { post } }); // Pass the post data in the state property
+    dispatch(getPost(id));
+    navigate(`/post/${id}`);
   };
 
   if (isLoading) {
@@ -64,3 +64,5 @@ function Posts() {
 }
 
 export default Posts;
+
+// Last edited: 03/15/2024 @ 11:06:35 AM

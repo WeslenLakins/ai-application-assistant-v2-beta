@@ -446,7 +446,7 @@ footer {
 }
 
 .post-content {
-  padding: 20px;
+  padding: 10px;
 }
 
 .post-title {
@@ -647,7 +647,7 @@ footer {
 
 /* Paragraphs within the post content */
 .post-content p {
-  margin-bottom: 20px;
+  margin-bottom: 30px;
 }
 
 /* Other elements within the post content like lists, images etc. */
@@ -726,5 +726,89 @@ footer {
 
   .post-content h4 {
     font-size: 1.1rem;
+  }
+}
+
+/* Update Post Page Styles */
+.update-post-container {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.update-post-container h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.update-post-container form {
+  margin-bottom: 20px;
+}
+
+.update-post-container form .form-group {
+  margin-bottom: 20px;
+}
+
+.update-post-container form .form-group label {
+  display: block;
+  margin-bottom: 5px;
+  color: #333;
+}
+
+.update-post-container form .form-group input,
+.update-post-container form .form-group textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #e6e6e6;
+  border-radius: 5px;
+  font-family: inherit;
+}
+
+.update-post-container form .form-group textarea {
+  resize: vertical;
+}
+
+.update-post-container form .form-group select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #e6e6e6;
+  border-radius: 5px;
+  font-family: inherit;
+}
+
+.update-post-container form .btn {
+  padding: 10px 20px;
+  border: 1px solid #000;
+  border-radius: 5px;
+  background: #000;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  text-align: center;
+  appearance: button;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.update-post-container form .btn:hover {
+  transform: scale(0.98);
+}
+
+/* Responsive adjustments */
+
+@media (max-width: 768px) {
+  .update-post-container {
+    margin: 20px auto;
+  }
+
+  .update-post-container h2 {
+    font-size: 2rem;
   }
 }

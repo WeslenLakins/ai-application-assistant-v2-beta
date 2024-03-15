@@ -8,6 +8,7 @@ import SignIn from './pages/SignIn';
 import NewPost from './pages/NewPost';
 import Posts from './pages/Posts';
 import Post from './pages/Post';
+import UpdatePost from './pages/UpdatePost';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
             <Route path='/new-post' element={<NewPost />} />
             <Route path='/posts' element={<Posts />} />
             <Route path='/post/:id' element={<Post />} />
+            <Route path='/edit/:id' element={<UpdatePost />} />
           </Routes>
         </div>
       </Router>

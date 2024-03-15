@@ -68,6 +68,26 @@ export const getPost = createAsyncThunk(
   }
 );
 
+// Update post by id
+export const updatePost = createAsyncThunk(
+  'post/updatePost',
+  async ({ id, ...postData }, thunkAPI) => {
+    try {
+      const token = thunkAPI.getState().auth.user.token;
+      return await postService.updatePost(id, postData, token); // Ensure correct parameter order
+    } catch (error) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString();
+
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
 export const postSlice = createSlice({
   name: 'post',
   initialState,
@@ -110,6 +130,19 @@ export const postSlice = createSlice({
         state.post = action.payload;
       })
       .addCase(getPost.rejected, (state, action) => {
+        state.isError = true;
+        state.isLoading = false;
+        state.message = action.payload;
+      })
+      .addCase(updatePost.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(updatePost.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.post = action.payload;
+      })
+      .addCase(updatePost.rejected, (state, action) => {
         state.isError = true;
         state.isLoading = false;
         state.message = action.payload;

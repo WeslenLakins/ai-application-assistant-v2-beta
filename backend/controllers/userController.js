@@ -74,6 +74,7 @@ const signinUser = asyncHandler(async (req, res) => {
       lastName: user.lastName,
       email: user.email,
       age: user.age,
+      isAdmin: user.isAdmin,
       token: generateToken(user._id),
     });
   } else {

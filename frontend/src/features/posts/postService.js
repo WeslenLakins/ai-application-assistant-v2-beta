@@ -29,10 +29,26 @@ const getPost = async (id) => {
   return response.data;
 };
 
+// update post by id
+const updatePost = async (id, postData, token) => {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+
+  const response = await axios.put(`${API_URL}${id}`, postData, config);
+
+  return response.data;
+};
+
 const postService = {
   createPost,
   getPosts,
   getPost,
+  updatePost,
 };
 
 export default postService;
+
+// Last edited: 03/15/2024 @ 11:06:35 AM
