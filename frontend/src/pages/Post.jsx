@@ -42,6 +42,11 @@ function Post() {
 
   return (
     <div className='post-container'>
+      {user && user.token && user.isAdmin && (
+        <button className='edit-btn' onClick={handleEdit}>
+          Edit
+        </button>
+      )}
       <h2 className='post-title'>{post.title}</h2>
       <div className='post-meta'>
         <span className='post-author'>By {post.author}</span>

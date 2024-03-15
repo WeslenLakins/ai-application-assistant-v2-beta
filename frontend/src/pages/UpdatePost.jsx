@@ -12,7 +12,7 @@ function UpdatePost() {
     (state) => state.post
   );
 
-  // Initialize local state with empty strings
+  // Initialize local state with empty strings - need to add post object or author state to the local state because the author field is required in the backend
   const [title, setTitle] = useState('');
   const [headline, setHeadline] = useState('');
   const [content, setContent] = useState('');
@@ -38,17 +38,8 @@ function UpdatePost() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    // Use the local state values for updated data
-    const updatedData = {
-      id,
-      title,
-      headline,
-      content,
-    };
-
-    dispatch(updatePost(updatedData));
-    navigate(`/post/${id}`);
+    dispatch(updatePost({ id, title, headline, content }));
+    navigate(`/posts`);
   };
 
   if (isLoading) return <div>Loading...</div>;

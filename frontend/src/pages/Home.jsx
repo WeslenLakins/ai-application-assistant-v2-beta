@@ -5,10 +5,10 @@ function Home() {
   return (
     <>
       <section className='heading'>
-        <h1>Welcome to MERN Stack</h1>
+        <h1>Welcome to MERN Stack Blog</h1>
         <p>
-          Sign up for an account to get access to all the features, or sign in
-          to your account to get access to all the features.
+          This is a simple blog application built using the MERN stack. You can
+          create, read, update, and delete posts.
         </p>
       </section>
 
