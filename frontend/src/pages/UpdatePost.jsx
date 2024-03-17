@@ -12,7 +12,7 @@ function UpdatePost() {
     (state) => state.post
   );
 
-  // Initialize local state with empty strings - need to add post object or author state to the local state because the author field is required in the backend
+  // Local state to store the updated post data
   const [title, setTitle] = useState('');
   const [headline, setHeadline] = useState('');
   const [content, setContent] = useState('');

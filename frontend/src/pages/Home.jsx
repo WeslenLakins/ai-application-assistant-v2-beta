@@ -18,6 +18,9 @@ function Home() {
       <Link to='/posts' className='btn btn-block'>
         <FaQuestionCircle /> View Posts
       </Link>
+      <Link to='networking' className='btn btn reverse btn-block'>
+        <FaQuestionCircle /> Networking Tools
+      </Link>
     </>
   );
 }

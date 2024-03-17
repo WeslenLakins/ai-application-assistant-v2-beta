@@ -51,7 +51,7 @@ const createPost = asyncHandler(async (req, res) => {
 // @route   PUT /api/posts/:id
 // @access  Private/Admin
 const updatePost = asyncHandler(async (req, res) => {
-  const { title, content, headline, author } = req.body;
+  const { title, content, headline } = req.body;
 
   const post = await Post.findById(req.params.id);
 
@@ -59,7 +59,6 @@ const updatePost = asyncHandler(async (req, res) => {
     post.title = title;
     post.content = content;
     post.headline = headline;
-    post.author = author;
 
     const updatedPost = await post.save();
     res.json(updatedPost);

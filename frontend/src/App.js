@@ -9,6 +9,7 @@ import NewPost from './pages/NewPost';
 import Posts from './pages/Posts';
 import Post from './pages/Post';
 import UpdatePost from './pages/UpdatePost';
+import Networking from './pages/Networking';
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
             <Route path='/posts' element={<Posts />} />
             <Route path='/post/:id' element={<Post />} />
             <Route path='/edit/:id' element={<UpdatePost />} />
+            <Route path='/networking' element={<Networking />} />
           </Routes>
         </div>
       </Router>
