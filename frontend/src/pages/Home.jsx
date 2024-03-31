@@ -18,8 +18,20 @@ function Home() {
       <Link to='/posts' className='btn btn-block'>
         <FaQuestionCircle /> View Posts
       </Link>
-      <Link to='networking' className='btn btn reverse btn-block'>
+      <Link to='/networking' className='btn btn reverse btn-block'>
         <FaQuestionCircle /> Networking Tools
+      </Link>
+      <Link to='/services' className='btn btn reverse btn-block'>
+        <FaQuestionCircle /> Services
+      </Link>
+      <Link to='/new-resume' className='btn btn-reverse btn-block'>
+        <FaTicketAlt /> Create New Resume
+      </Link>
+      <Link to='/resumes' className='btn btn-block'>
+        <FaQuestionCircle /> View Resumes
+      </Link>
+      <Link to='/new-headshot' className='btn btn-reverse btn-block'>
+        <FaTicketAlt /> Create New Headshot
       </Link>
     </>
   );

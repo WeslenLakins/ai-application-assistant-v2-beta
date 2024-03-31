@@ -10,6 +10,14 @@ import Posts from './pages/Posts';
 import Post from './pages/Post';
 import UpdatePost from './pages/UpdatePost';
 import Networking from './pages/Networking';
+import Services from './pages/Services';
+import NewResume from './pages/NewResume';
+import Resumes from './pages/Resumes';
+import Resume from './pages/Resume';
+import NewHeadshot from './pages/NewHeadshot';
+import Headshots from './pages/Headshots';
+import Headshot from './pages/Headshot';
+import Profile from './pages/Profile';
 
 function App() {
   return (
@@ -26,6 +34,14 @@ function App() {
             <Route path='/post/:id' element={<Post />} />
             <Route path='/edit/:id' element={<UpdatePost />} />
             <Route path='/networking' element={<Networking />} />
+            <Route path='/services' element={<Services />} />
+            <Route path='/new-resume' element={<NewResume />} />
+            <Route path='/resumes' element={<Resumes />} />
+            <Route path='/resume/:id' element={<Resume />} />
+            <Route path='/new-headshot' element={<NewHeadshot />} />
+            <Route path='/headshots' element={<Headshots />} />
+            <Route path='/headshot/:id' element={<Headshot />} />
+            <Route path='/profile' element={<Profile />} />
           </Routes>
         </div>
       </Router>

@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { FaUser } from 'react-icons/fa';
 import { useSelector, useDispatch } from 'react-redux';
 import { signIn, reset } from '../features/auth/authSlice';
@@ -96,7 +96,21 @@ function SignIn() {
               Sign In
             </button>
           </div>
+
+          <div>
+            <Link to='/forgot-password' className='forgotPasswordLink'>
+              Forgot password?
+            </Link>
+          </div>
+
+          <div>
+            <Link to='/signup' className='registerLink'>
+              Don't have an account? Sign Up
+            </Link>
+          </div>
         </form>
+
+        {/* Google OAuth */}
       </section>
     </>
   );

@@ -1,10 +1,17 @@
 import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { FaUser } from 'react-icons/fa';
 import { useSelector, useDispatch } from 'react-redux';
 import { signUp, reset } from '../features/auth/authSlice';
 import Spinner from '../components/Spinner';
+import {
+  createUserWithEmailAndPassword,
+  getAuth,
+  updateProfile,
+} from 'firebase/auth';
+import { setDoc, doc, serverTimestamp } from 'firebase/firestore';
+import { db } from '../firebase.config';
 
 function SignUp() {
   const [formData, setFormData] = useState({
@@ -51,16 +58,50 @@ function SignUp() {
 
     if (password !== passwordConfirm) {
       toast.error('Passwords do not match');
-    } else {
-      const userData = {
+      return; // Stop execution if passwords don't match
+    }
+
+    try {
+      // Step 1: Create user in Firebase Authentication
+      const auth = getAuth();
+      const userCredential = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+      const user = userCredential.user;
+
+      // Optional: Update profile with additional details, like displayName
+      await updateProfile(auth.currentUser, {
+        displayName: `${firstName} ${lastName}`,
+      });
+
+      // Step 2: Create a document in Firestore with the user's details
+      await setDoc(doc(db, 'users', user.uid), {
+        firstName,
+        lastName,
+        email,
+        age,
+        createdAt: serverTimestamp(),
+      });
+
+      // Step 3: Dispatch the signUp action for MongoDB creation
+      // Assuming your signUp action expects user data and the Firebase user UID
+      const userDataForMongoDB = {
         firstName,
         lastName,
         email,
         password,
         age,
       };
+      dispatch(signUp(userDataForMongoDB));
 
-      dispatch(signUp(userData));
+      // Step 4: Handle success case, like redirecting or showing a message
+      toast.success('Account created successfully');
+      navigate('/'); // Redirect the user after successful account creation
+    } catch (error) {
+      console.error('Error creating user:', error.message);
+      toast.error('Error creating account. Please try again.');
     }
   };
 
@@ -157,6 +198,18 @@ function SignUp() {
             </button>
           </div>
         </form>
+
+        <div>
+          <Link to='/signin' className='registerLink'>
+            Already have an account? Sign In
+          </Link>
+        </div>
+
+        <div>
+          <Link to='/forgot-password' className='forgotPasswordLink'>
+            Forgot password?
+          </Link>
+        </div>
       </section>
     </>
   );
