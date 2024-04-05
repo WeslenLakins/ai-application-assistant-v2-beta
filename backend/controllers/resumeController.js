@@ -29,29 +29,29 @@ const createResume = asyncHandler(async (req, res) => {
   }
 
   // Generate the prompt for the newResume to send to OpenAI
-  const prompt = `You will be given a Job Title, Company Name, Location, and a Job Description of a job the Job Applicant (the “Applicant”) is applying for along with a copy of the Applicant's current Resume. You will write a new resume for the Applicant that aligns the past education and experiences listed in their current resume with the requirements and qualifications listed in the Job Description of the position they are applying for. Rather than simply outlining the applicant's past experiences, you should quantify their achievements and contributions in a way that makes sense given the previous job titles the Applicant has held. For example: 
+  const prompt = `Your task is to craft a tailored resume for a Job Applicant (referred to as the “Applicant”) who is applying for a specific position. You will be provided with the Job Title, Company Name, Location, and Job Description of the vacancy, alongside the Applicant's current Resume. Your objective is to revise the Applicant's resume to closely align their education and prior work experiences with the job's requirements and desired qualifications. Achieve this by quantifying the Applicant's accomplishments and contributions in their previous roles, employing the formula: accomplished (X), as measured by (Y), by doing (Z). Maintain the examples provided as a guideline for quantifying achievements:
 
- 
+  • Streamlined the handling of numerous technology and software licensing contracts increasing departmental efficiency in processing transactions 30% by leading the implementation of strategic legal frameworks. 
+  • Reduced legal expenditure cutting costs 20% year-over-year by strategically managing and tracking work delegated outside counsel for cost-effectiveness.
+  • Enhanced company compliance securing a 100% success rate in audits by structuring, drafting, and overseeing the implementation of new company policies and procedures.
+  • Elevated research quality on data privacy laws for emerging technology contributing to 2 publications in reputable legal sources by drafting comprehensive memorandum referencing legislation such as HIPPA, the California Privacy Rights Act, and the GDPR.
+  • Led effective research projects coordinating three teams of 10 graduate-level students each to complete projects within deadlines by spearheading in-depth legal research assignments and delegating tasks according to skill set.
+  • Improved judicial decision-making support providing critical insights on over 100 legal filings by offering in-depth legal analyses and recommendations to the Judge.
+  • Strengthened litigation management and federal court procedure understanding aiding in the efficient progress of 50+ cases enhancing litigation management skills and learning the nuances of federal court.
 
-  1. Conduct market research and gather feedback from 15,000+ users to identify customer needs and opportunities for differentiation.
-  
-  2. Mentor and manage a team of 8 product specialists, fostering a culture of innovation and earning two team members the “Employee of the Year” award under my leadership.
-  
-  3. Use agile methodologies to manage product backlogs, prioritize features, and ensure timely delivery of high-quality releases, resulting in an average release cycle time reduction of 25% 
-  
-  4. Collaborated closely with UX/UI designers to create intuitive and engaging user interfaces, leading to an 18% improvement in user satisfaction
-  
-  5. Leveraged data analysis and user feedback to drive improvements, optimizing product performance and resulting in a 23% decrease in customer support requests 
-  
-  6. Collaborated with non-profits to launch community fitness programs, attracting over 7,000 participants in the first 6-months, and enhancing brand goodwill by promoting health in underserved communities. 
-  
-  7. Launched and managed partnerships with 3 external vendors, expanding product capabilities and contributing to a 15% increase in product reach
+  Ensure the new resume mirrors the language style and tone found in the job description to establish relevance and appeal. Format the revised resume to reflect the Applicant's current resume format, adopting a modern and professional tone appropriate for a contemporary workplace. The revamped resume must be concise, fitting within a one-page limit, unless the users current resume is longer than one-page, and should exclusively focus on resume content without including extraneous information.
 
- 
-
-  Additionally, write the new resume in the same language used in the job description. Furthermore, format the new resume you are writing for the Applicant exactly how the Applicants current Resume is formatted. You will write the Applicants new resume in a modern style with a professional tone without being too formal, as a modern employee might do naturally. Do not include anything in your response that is not a part of the resume. The resume should be no longer than 1 page.
+  Provide the necessary details as follows:
   
-  Job title: ${jobTitle}\nCompany: ${company}\nLocation: ${location}\nJob description: ${jobDescription}\n\nCurrent resume:\n${currentResume}\n\nNew resume:`;
+  Job title: ${jobTitle}
+  Company: ${company}
+  Location: ${location}
+  Job description: ${jobDescription}
+  
+  Current resume:
+  ${currentResume}
+  
+  New resume:`;
 
   // Generate the newResume using OpenAI.
   let newResume;

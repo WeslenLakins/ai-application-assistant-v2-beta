@@ -50,13 +50,11 @@ function DomainSearch() {
 
     const departmentsQuery = selectedDepartments.join(',');
     try {
-      const API_URL = `https://api.hunter.io/v2/domain-search?domain=${domain}&limit=100&type=personal${
-        departmentsQuery ? `&department=${departmentsQuery}` : ''
-      }&required_field=full_name&api_key=87a0b8a3356adc42f692dc727b12fe26ca8b6522`;
-      const response = await axios.get(API_URL);
-      setEmails(response.data.data.emails);
-      setFilteredEmails(response.data.data.emails); // Initialize filteredEmails with all emails
-      setCompanyInfo(response.data.data);
+      // Replace the direct call with a call to your backend
+      const response = await axios.post('/api/domain-search', { domain, departments: departmentsQuery });
+      setEmails(response.data.emails);
+      setFilteredEmails(response.data.emails); // Initialize filteredEmails with all emails
+      setCompanyInfo(response.data);
     } catch (error) {
       setError('An error occurred while searching the domain.');
     } finally {
