@@ -103,6 +103,42 @@ const getUserProfile = asyncHandler(async (req, res) => {
   }
 });
 
+// @desc    OAuth user handler
+// @route   POST /api/users/oauth
+// @access  Public
+const oauthUser = asyncHandler(async (req, res) => {
+  const { email, firstName, lastName, age } = req.body;
+
+  let user = await User.findOne({ email });
+
+  if (!user) {
+    // If user doesn't exist, create a new MongoDB user entry
+    user = new User({
+      firstName,
+      lastName,
+      email,
+      age,
+      isAdmin: false, // Set default permissions as needed
+      isOAuth: true, // Flag to indicate OAuth sign-in method
+    });
+    await user.save();
+  }
+
+  // Assuming your user model and generateToken method handle ID and token creation:
+  const token = generateToken(user._id);
+
+  res.status(201).json({
+    _id: user._id,
+    firstName: user.firstName,
+    lastName: user.lastName,
+    email: user.email,
+    age: user.age,
+    isAdmin: user.isAdmin,
+    token, // Send the token for client-side handling
+  });
+});
+
+
 // Generate a token
 const generateToken = (id) => {
   return jwt.sign({ id }, process.env.JWT_SECRET, {
@@ -114,4 +150,5 @@ module.exports = {
   signupUser,
   signinUser,
   getUserProfile,
+  oauthUser,
 };

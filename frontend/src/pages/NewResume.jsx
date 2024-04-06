@@ -44,7 +44,7 @@ const NewResume = () => {
       currentResume: resume,
     };
 
-    dispatch(createResume(resumeData, user.token));
+    dispatch(createResume(resumeData, user.user.token));
   };
 
   if (isLoading) {

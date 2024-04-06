@@ -12,6 +12,7 @@ import {
 } from 'firebase/auth';
 import { setDoc, doc, serverTimestamp } from 'firebase/firestore';
 import { db } from '../firebase.config';
+import OAuth from '../components/OAuth';
 
 function SignUp() {
   const [formData, setFormData] = useState({
@@ -210,6 +211,9 @@ function SignUp() {
             Forgot password?
           </Link>
         </div>
+
+        <OAuth />
+
       </section>
     </>
   );

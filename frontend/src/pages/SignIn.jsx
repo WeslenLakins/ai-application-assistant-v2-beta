@@ -5,6 +5,7 @@ import { FaUser } from 'react-icons/fa';
 import { useSelector, useDispatch } from 'react-redux';
 import { signIn, reset } from '../features/auth/authSlice';
 import Spinner from '../components/Spinner';
+import OAuth from '../components/OAuth';
 
 function SignIn() {
   const [formData, setFormData] = useState({
@@ -31,7 +32,10 @@ function SignIn() {
       navigate('/');
     }
 
-    dispatch(reset());
+    // Cleanup function to reset auth state when component unmounts
+    return () => {
+      dispatch(reset());
+    };
   }, [isError, isSuccess, user, message, dispatch, navigate]);
 
   const onChange = (e) => {
@@ -110,7 +114,8 @@ function SignIn() {
           </div>
         </form>
 
-        {/* Google OAuth */}
+        <OAuth />
+
       </section>
     </>
   );

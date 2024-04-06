@@ -5,10 +5,9 @@ function Home() {
   return (
     <>
       <section className='heading'>
-        <h1>Welcome to MERN Stack Blog</h1>
+        <h1>AI Application Assistant v2</h1>
         <p>
-          This is a simple blog application built using the MERN stack. You can
-          create, read, update, and delete posts.
+          Welcome to the AI Application Assistant v2!
         </p>
       </section>
 
@@ -19,7 +18,7 @@ function Home() {
         <FaQuestionCircle /> View Posts
       </Link>
       <Link to='/networking' className='btn btn-reverse btn-block'>
-        <FaTicketAlt /> Networking Tools
+        <FaTicketAlt /> Networking Pro
       </Link>
       <Link to='/services' className='btn btn reverse btn-block'>
         <FaQuestionCircle /> View Services

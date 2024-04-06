@@ -17,13 +17,18 @@ const userSchema = new mongoose.Schema(
     },
     password: {
       type: String,
-      required: [true, 'Password is required'],
+      required: [function() { return !this.isOAuth; }, 'Password is required'],
     },
     age: {
       type: Number,
       required: [true, 'Age is required'],
     },
     isAdmin: {
+      type: Boolean,
+      required: false,
+      default: false,
+    },
+    isOAuth: {
       type: Boolean,
       required: false,
       default: false,
