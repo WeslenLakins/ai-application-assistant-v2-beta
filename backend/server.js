@@ -1,12 +1,12 @@
-const express = require('express');
-const dotenv = require('dotenv').config();
-const { errorHandler } = require('./middleware/errorMiddleware');
+const express = require("express");
+const dotenv = require("dotenv").config();
+const { errorHandler } = require("./middleware/errorMiddleware");
 const PORT = process.env.PORT || 5000;
-const connectDB = require('./config/db');
-const colors = require('colors');
-const fetch = require('node-fetch');
-const cors = require('cors');
-const FormData = require('form-data');
+const connectDB = require("./config/db");
+const colors = require("colors");
+const fetch = require("node-fetch");
+const cors = require("cors");
+const FormData = require("form-data");
 
 // Connect to the database
 connectDB();
@@ -17,8 +17,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cors());
 
-app.get('/', (req, res) => {
-  res.status(200).json({ message: 'API is running...' });
+app.get("/", (req, res) => {
+	res.status(200).json({ message: "API is running..." });
 });
 
 // // Add a new route for Leap AI API requests
@@ -98,14 +98,13 @@ app.get('/', (req, res) => {
 //   }
 // });
 
-
-
-app.use('/api/users', require('./routes/userRoutes'));
-app.use('/api/posts', require('./routes/postRoutes'));
-app.use('/api/resumes', require('./routes/resumeRoutes'));
-app.use('/api/leap-ai', require('./routes/leapAiRoutes'));
-app.use('/api/domain-search', require('./routes/domainSearchRoutes'));
-app.use('/api/questions', require('./routes/questionRoutes'));
+app.use("/api/users", require("./routes/userRoutes"));
+app.use("/api/posts", require("./routes/postRoutes"));
+app.use("/api/resumes", require("./routes/resumeRoutes"));
+app.use("/api/leap-ai", require("./routes/leapAiRoutes"));
+app.use("/api/domain-search", require("./routes/domainSearchRoutes"));
+app.use("/api/questions", require("./routes/questionRoutes"));
+app.use("/api/scratch-resumes", require("./routes/scratchResumeRoutes"));
 
 app.use(errorHandler);
 
