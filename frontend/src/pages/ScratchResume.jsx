@@ -11,7 +11,7 @@ import Spinner from "../components/Spinner";
 function ScratchResume() {
 	const { id } = useParams();
 	const dispatch = useDispatch();
-	const { isLoading, isError, isSuccess, scratchResume, message } = useSelector(
+	const { isLoading, isError, scratchResume, message } = useSelector(
 		(state) => state.scratchResume
 	);
 
@@ -19,40 +19,74 @@ function ScratchResume() {
 		if (id) {
 			dispatch(getScratchResumeById(id));
 		}
-	}, [dispatch, id]);
+
+		return () => {
+			dispatch(reset());
+		};
+	}, [id, dispatch]);
 
 	useEffect(() => {
-		return () => {
-			if (isSuccess) {
-				dispatch(reset());
-			}
-		};
-	}, [isSuccess, dispatch]);
+		if (isError) {
+			toast.error(message);
+		}
+	}, [isError, message]);
 
-	if (isError) {
-		toast.error(message);
-	}
+	const formatResumeText = (resumeText) => {
+		if (!resumeText) return null;
+
+		const sections = resumeText.split("\n\n").filter(Boolean);
+
+		return sections.map((section, index) => {
+			const [sectionHeader, ...content] = section.split("\n").filter(Boolean);
+
+			// Check if the section header is 'WORK EXPERIENCE' to format it as a list
+			const isWorkExperienceSection = sectionHeader === "WORK EXPERIENCE";
+
+			return (
+				<div key={index} className='resume-section'>
+					<h2>{sectionHeader}</h2>
+					{isWorkExperienceSection ? (
+						<ul>
+							{content.map((item, lineIndex) => (
+								<li key={lineIndex} className='resume-list-item'>
+									{!item.startsWith("•") ? `• ${item}` : item}
+								</li>
+							))}
+						</ul>
+					) : (
+						<div>
+							{content.map((item, lineIndex) => (
+								<p
+									key={lineIndex}
+									className={
+										sectionHeader !== "SKILLS" ? "" : "resume-list-item"
+									}>
+									{sectionHeader !== "SKILLS" || item.startsWith("•")
+										? item
+										: `• ${item}`}
+								</p>
+							))}
+						</div>
+					)}
+				</div>
+			);
+		});
+	};
 
 	if (isLoading) {
 		return <Spinner />;
 	}
 
-	return (
-		<>
-			<section className='job-details'>
-				<h1>Job Details</h1>
-				<div className='job-details-contents'>
-					<p>{new Date(scratchResume.createdAt).toLocaleString("en-US")}</p>
-					<p>{scratchResume.jobTitle}</p>
-					<p>{scratchResume.company}</p>
-					<p>{scratchResume.location}</p>
-				</div>
-			</section>
+	if (!scratchResume?.scratchResume) {
+		return <p>Resume data is not available.</p>;
+	}
 
-			<section className='scratch-resume'>
-				<p>{scratchResume.scratchResume}</p>
-			</section>
-		</>
+	const formattedResume = formatResumeText(scratchResume.scratchResume);
+
+	return (
+		<div className='resume-container'>
+			<div className='resume-page'>{formattedResume}</div>
+		</div>
 	);
 }
 

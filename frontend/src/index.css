@@ -2319,3 +2319,40 @@ a:hover {
 		padding: 10px 15px; /* Smaller button padding on mobile */
 	}
 }
+
+.resume-page h2 {
+	font-size: 1.5em;
+	font-weight: bold;
+	margin-top: 1em;
+	margin-bottom: 0.5em;
+}
+
+.resume-page h3 {
+	font-size: 1.2em;
+	font-weight: bold;
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.resume-page .noBullet {
+	list-style-type: none; /* Removes bullet points */
+}
+
+/* Style adjustments for the paper-like layout */
+.resume-container {
+	background: #fff;
+	width: 8.5in;
+	min-height: 11in;
+	padding: 1in;
+	margin: auto; /* Add more margin to simulate a paper lying on a surface */
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	position: relative;
+	box-sizing: border-box;
+}
+
+.resume-skill-item {
+	margin-left: 20px; /* Adjust as needed for proper indentation */
+	position: relative;
+	list-style-type: disc; /* This creates the bullet */
+	/* If you want to use a custom bullet, you can use 'list-style-type: none;' and add a custom bullet as a pseudo-element */
+}
